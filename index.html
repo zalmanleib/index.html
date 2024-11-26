@@ -3,63 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to My GitHub Page</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Shabbos Alarm Clock</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      overflow: hidden;
     }
-    .navbar {
-      background-color: #343a40;
-    }
-    .navbar-brand {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #f8f9fa !important;
-    }
-    .footer {
-      background-color: #343a40;
-      color: #f8f9fa;
-      padding: 1rem 0;
+
+    .container {
       text-align: center;
       margin-top: 50px;
     }
-    .hero {
-      text-align: center;
-      padding: 50px 20px;
-      background-color: #f8f9fa;
+
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+
+    button {
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
-    .hero p {
-      font-size: 1.2rem;
+
+    button:hover {
+      background-color: #555;
+    }
+
+    #alarm-screen {
+      display: none;
+      background-color: black;
+      color: white;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 48px;
+    }
+
+    #clock {
+      font-size: 64px;
+      font-weight: bold;
+    }
+
+    #alarm-message {
+      font-size: 32px;
+      margin-top: 20px;
+    }
+
+    #status {
+      color: #ff0;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">My GitHub Projects</a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="container">
-      <h1>Welcome to My GitHub Page</h1>
-      <p>Explore my projects, learn about my work, and get in touch. I build tools, create solutions, and contribute to the open-source community.</p>
-    </div>
+  <div id="setup-screen" class="container">
+    <h1>Shabbos Alarm Clock</h1>
+    <label for="alarm-time">Set Alarm Time:</label>
+    <input type="time" id="alarm-time">
+    <br>
+    <label for="ring-duration">Alarm Duration (seconds):</label>
+    <input type="number" id="ring-duration" min="1" placeholder="Enter seconds">
+    <br>
+    <button onclick="prepareAlarm()">Prepare Alarm</button>
+    <button onclick="setAlarm()">Set Alarm</button>
+    <p id="status"></p>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2024 My Name. All rights reserved.</p>
-  </footer>
+  <div id="alarm-screen">
+    <div id="clock">00:00</div>
+    <div id="alarm-message"></div>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let alarmSound;
+    let alarmTimeout;
+    let stopAlarmTimeout;
+
+    // Show the setup screen by default
+    window.onload = () => {
+      document.getElementById("setup-screen").style.display = "block";
+      document.getElementById("alarm-screen").style.display = "none";
+    };
+
+    function prepareAlarm() {
+      // Preload the sound to unlock browser audio
+      alarmSound = new Audio('https://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/ateapill.ogg'); // Example sound
+      alarmSound.loop = true;
+      alarmSound.play().then(() => alarmSound.pause());
+      document.getElementById("status").textContent = "Alarm prepared. You can now set the time.";
+    }
+
+    function playAlarm() {
+      alarmSound.currentTime = 0;
+      alarmSound.play();
+      const duration = document.getElementById("ring-duration").value;
+      stopAlarmTimeout = setTimeout(() => {
+        alarmSound.pause();
+        alarmSound.currentTime = 0;
+        document.getElementById("alarm-message").textContent = "Alarm stopped.";
+      }, duration * 1000);
+    }
+
+    function setAlarm() {
+      const alarmTime = document.getElementById("alarm-time").value;
+      if (!alarmTime) {
+        alert("Please set a valid time.");
+        return;
+      }
+
+      const ringDuration = document.getElementById("ring-duration").value;
+      if (!ringDuration || ringDuration <= 0) {
+        alert("Please set a valid duration.");
+        return;
+      }
+
+      const now = new Date();
+      const alarmDate = new Date();
+      const [hours, minutes] = alarmTime.split(":");
+      alarmDate.setHours(hours, minutes, 0, 0);
+
+      if (alarmDate <= now) {
+        alarmDate.setDate(now.getDate() + 1); // Move to next day if time is past
+      }
+
+      const timeUntilAlarm = alarmDate - now;
+      clearTimeout(alarmTimeout);
+      clearTimeout(stopAlarmTimeout);
+
+      document.getElementById("status").textContent = `Alarm set for ${alarmTime}.`;
+      switchToAlarmScreen();
+
+      alarmTimeout = setTimeout(() => {
+        document.getElementById("alarm-message").textContent = "Alarm ringing!";
+        playAlarm();
+      }, timeUntilAlarm);
+    }
+
+    function switchToAlarmScreen() {
+      document.getElementById("setup-screen").style.display = "none";
+      const alarmScreen = document.getElementById("alarm-screen");
+      alarmScreen.style.display = "flex";
+      updateClock();
+    }
+
+    function updateClock() {
+      const clockElement = document.getElementById("clock");
+
+      function refreshClock() {
+        const now = new Date();
+        clockElement.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      }
+
+      refreshClock(); // Show initial time immediately
+      setInterval(refreshClock, 1000);
+    }
+  </script>
 </body>
 </html>
