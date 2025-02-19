@@ -55,7 +55,7 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Hero Section - Keeps Background Fixed */
+/* Hero Section - Full Screen and Fixed */
 .hero {
     position: fixed;
     top: 0;
@@ -63,15 +63,15 @@ nav a:hover {
     width: 100%;
     height: 100vh;
     background: url('https://lubavitchyeshiva.org/media/images/1299/zTRh12994879.jpg') no-repeat center center/cover;
-    background-attachment: fixed; /* Keeps it fixed while scrolling */
+    background-attachment: fixed; /* Keeps the image still */
     background-size: cover;
-    z-index: -1; /* Keeps it behind content */
+    z-index: -1; /* Ensures it stays behind the content */
 }
 
-/* Welcome Section - Floats Over Hero */
+/* Welcome Section - Slides Up Over Hero */
 .welcome {
     max-width: 800px;
-    margin: 120px auto; /* Adds spacing so it doesn’t overlap the header */
+    margin: 100vh auto 50px; /* Starts below the hero section */
     padding: 30px;
     background: white;
     border-radius: 8px;
@@ -93,6 +93,17 @@ nav a:hover {
     line-height: 1.6;
     color: var(--text-color);
     margin-bottom: 15px;
+}
+
+/* Content Below Welcome */
+.extra-content {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 /* Footer */
