@@ -57,19 +57,32 @@ nav a:hover {
     color: var(--primary-color);
 }
 
-/* Hero Section - Fixed Background */
+/* Hero Section - FIXED IMAGE */
 .hero {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
     background: url('https://lubavitchyeshiva.org/media/images/1299/zTRh12994879.jpg') no-repeat center center/cover;
-    background-attachment: fixed;
-    background-size: cover;
+    z-index: -1;
 }
 
-/* Section Styling */
+/* First Section Starts Lower Down */
+.first-section {
+    position: relative;
+    background: white;
+    padding: 100px 15%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Regular Sections */
 .section {
-    padding: 80px 15%;
+    padding: 100px 15%;
     background: white;
     min-height: 100vh;
     display: flex;
@@ -77,19 +90,7 @@ nav a:hover {
     justify-content: center;
 }
 
-.section h2 {
-    color: var(--primary-color);
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.section p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: var(--text-color);
-}
-
-/* Parallax Effect - Background Moves Up */
+/* Parallax Effect Starts AFTER First Section */
 .parallax {
     background: url('https://lubavitchyeshiva.org/media/images/1299/zTRh12994879.jpg') no-repeat center center/cover;
     background-attachment: fixed;
@@ -114,36 +115,6 @@ nav a:hover {
     background: var(--accent-color);
 }
 
-/* Form Styles */
-form {
-    max-width: 600px;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-input[type="submit"] {
-    background: var(--primary-color);
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background: var(--accent-color);
-}
-
 /* Footer */
 footer {
     background-color: var(--primary-color);
@@ -151,5 +122,4 @@ footer {
     text-align: center;
     padding: 15px;
     width: 100%;
-    bottom: 0;
 }
