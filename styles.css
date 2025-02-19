@@ -11,6 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -22,7 +23,7 @@ body {
 /* Header */
 header {
     background-color: white;
-    padding: 10px 20px;
+    padding: 15px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -49,61 +50,98 @@ nav a {
     text-decoration: none;
     margin: 0 15px;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: var(--primary-color);
 }
 
-/* Hero Section - Full Screen and Fixed */
+/* Hero Section - Fixed Background */
 .hero {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     height: 100vh;
     background: url('https://lubavitchyeshiva.org/media/images/1299/zTRh12994879.jpg') no-repeat center center/cover;
-    background-attachment: fixed; /* Keeps the image still */
+    background-attachment: fixed;
     background-size: cover;
-    z-index: -1; /* Ensures it stays behind the content */
 }
 
-/* Welcome Section - Slides Up Over Hero */
-.welcome {
-    max-width: 800px;
-    margin: 100vh auto 50px; /* Starts below the hero section */
-    padding: 30px;
+/* Section Styling */
+.section {
+    padding: 80px 15%;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    position: relative;
-    z-index: 2; /* Ensures it appears above the hero */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Welcome Text */
-.welcome h2 {
+.section h2 {
     color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
-.welcome p {
-    font-size: 1.1rem;
-    line-height: 1.6;
+.section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
     color: var(--text-color);
-    margin-bottom: 15px;
 }
 
-/* Content Below Welcome */
-.extra-content {
-    max-width: 900px;
-    margin: 50px auto;
+/* Parallax Effect - Background Moves Up */
+.parallax {
+    background: url('https://lubavitchyeshiva.org/media/images/1299/zTRh12994879.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 50vh;
+}
+
+/* Button Styles */
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+.button:hover {
+    background: var(--accent-color);
+}
+
+/* Form Styles */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
     padding: 20px;
-    background: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+input[type="submit"] {
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: var(--accent-color);
 }
 
 /* Footer */
@@ -111,13 +149,7 @@ footer {
     background-color: var(--primary-color);
     color: white;
     text-align: center;
-    padding: 10px;
-    position: fixed;
+    padding: 15px;
     width: 100%;
     bottom: 0;
-}
-
-/* Extra space to allow scrolling */
-.content {
-    min-height: 200vh; /* Extends the page so scrolling works */
 }
