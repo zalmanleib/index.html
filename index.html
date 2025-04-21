@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lions Upfitters</title>
   <style>
     body, html {
@@ -15,7 +15,7 @@
 
     .video-header {
       position: relative;
-      height: calc(100vh - 100px); /* leave room for footer */
+      height: calc(100vh - 130px);
       overflow: hidden;
     }
 
@@ -35,14 +35,6 @@
 
     .background-video.active {
       display: block;
-    }
-
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      height: 80px;
-      z-index: 10;
     }
 
     .overlay {
@@ -80,30 +72,72 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: #111;
-      color: white;
-      padding: 20px;
+      background: white; /* White background */
+      color: black; /* Black text */
+      padding: 20px 10px;
       text-align: center;
       z-index: 20;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1); /* subtle shadow */
+    }
+
+    .contact-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      color: black; /* Black text and links */
+      text-decoration: none;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-links a:hover {
+      color: #0073e6; /* Optional: highlight color on hover */
+    }
+
+    .contact-links img {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 600px) {
+      .overlay h1 {
+        font-size: 2em;
+      }
+
+      .overlay p {
+        font-size: 1.2em;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        gap: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
 <div class="video-header">
-  <!-- Background videos -->
   <video class="background-video active" autoplay muted loop id="video1">
-    <source src="signal-2025-02-14-144835_002.mp4" type="video/mp4">
+    <source src="signal-2025-02-14-144835_002.mp4" type="video/mp4" />
   </video>
   <video class="background-video" autoplay muted loop id="video2">
-    <source src="signal-2024-11-05-042421_002.mp4" type="video/mp4">
+    <source src="signal-2024-11-05-042421_002.mp4" type="video/mp4" />
   </video>
   <video class="background-video" autoplay muted loop id="video3">
-    <source src="signal-2025-02-14-144835_003.mp4" type="video/mp4">
+    <source src="signal-2025-02-14-144835_003.mp4" type="video/mp4" />
   </video>
 
   <div class="overlay">
-    <img src="lions logo - Copy.png" alt="Lions Upfitters Logo" class="overlay-logo">
+    <img src="lions logo - Copy.png" alt="Lions Upfitters Logo" class="overlay-logo" />
     <h1>Lions Upfitters</h1>
     <p>Automotive Service – Brooklyn, NY</p>
     <p>Lights N' Sirens, Dash Cams, Backup Cameras & More</p>
@@ -113,7 +147,24 @@
 
 <div class="contact-section">
   <h2>Get in Touch</h2>
-  <p>Email: lionsupfitters@example.com<br>Phone: (123) 456-7890</p>
+  <div class="contact-links">
+    <a href="tel:+11234567890">
+      <img src="https://www.svgrepo.com/show/526086/phone.svg" alt="Phone" />
+      (123) 456-7890
+    </a>
+    <a href="mailto:lionsupfitters@example.com">
+      <img src="https://www.svgrepo.com/show/502648/email.svg" alt="Email" />
+      Email Us
+    </a>
+    <a href="https://wa.me/11234567890" target="_blank">
+      <img src="https://www.svgrepo.com/show/475692/whatsapp-color.svg" alt="WhatsApp" />
+      WhatsApp
+    </a>
+    <a href="https://instagram.com/lionsupfitters" target="_blank">
+      <img src="https://www.svgrepo.com/show/452229/instagram-1.svg" alt="Instagram" />
+      Instagram
+    </a>
+  </div>
 </div>
 
 <script>
