@@ -15,8 +15,11 @@
 
     .video-header {
       position: relative;
-      height: calc(100vh - 130px); /* space for footer */
+      height: calc(100vh - 130px);
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .background-video {
@@ -38,18 +41,8 @@
     }
 
     .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      padding: 0;
+      padding: 20px;
       z-index: 5;
     }
 
@@ -111,16 +104,24 @@
     }
 
     @media (max-width: 600px) {
+      .video-header {
+        height: auto;
+        min-height: 50vh;
+        padding: 40px 10px 20px;
+        align-items: center;
+      }
+
+      .overlay-logo {
+        max-height: 80px;
+        margin-bottom: 10px;
+      }
+
       .overlay h1 {
         font-size: 2em;
       }
 
       .overlay p {
         font-size: 1.2em;
-      }
-
-      .overlay-logo {
-        max-height: 80px;
       }
 
       .contact-links {
@@ -134,7 +135,7 @@
 
       .contact-links a {
         justify-content: left;
-	padding: 10px;
+        padding: 5px 0;
       }
     }
   </style>
@@ -142,7 +143,6 @@
 <body>
 
 <div class="video-header">
-  <!-- Background videos -->
   <video class="background-video active" autoplay muted loop id="video1">
     <source src="signal-2025-02-14-144835_002.mp4" type="video/mp4" />
   </video>
@@ -186,7 +186,6 @@
     </a>
   </div>
 </div>
-
 
 <script>
   const videos = document.querySelectorAll('.background-video');
