@@ -1,48 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lubavitch Yeshiva Mesivta of Detroit</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lions Upfitters</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      height: 100%;
+    }
+
+    .video-header {
+      position: relative;
+      height: calc(100vh - 100px); /* leave room for footer */
+      overflow: hidden;
+    }
+
+    .background-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: -1;
+      display: none;
+    }
+
+    .background-video.active {
+      display: block;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      height: 80px;
+      z-index: 10;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      z-index: 5;
+    }
+
+    .overlay-logo {
+      max-height: 120px;
+      margin-bottom: 20px;
+    }
+
+    .overlay h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+
+    .overlay p {
+      font-size: 1.5em;
+    }
+
+    .contact-section {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      z-index: 20;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <img src="https://lubavitchyeshiva.org/media/images/1310/QwiB13106920.png" alt="Yeshiva Logo" class="logo">
-        <nav>
-            <a href="about.html">About</a>
-            <a href="programs.html">Programs</a>
-            <a href="admissions.html">Admissions</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+<div class="video-header">
+  <!-- Background videos -->
+  <video class="background-video active" autoplay muted loop id="video1">
+    <source src="signal-2025-02-14-144835_002.mp4" type="video/mp4">
+  </video>
+  <video class="background-video" autoplay muted loop id="video2">
+    <source src="signal-2024-11-05-042421_002.mp4" type="video/mp4">
+  </video>
+  <video class="background-video" autoplay muted loop id="video3">
+    <source src="signal-2025-02-14-144835_003.mp4" type="video/mp4">
+  </video>
 
-    <!-- Hero Image (Full Screen) -->
-    <section class="hero"></section>
+  <div class="overlay">
+    <img src="lions logo - Copy.png" alt="Lions Upfitters Logo" class="overlay-logo">
+    <h1>Lions Upfitters</h1>
+    <p>Automotive Service – Brooklyn, NY</p>
+    <p>Lights N' Sirens, Dash Cams, Backup Cameras & More</p>
+    <p>Contact us today!</p>
+  </div>
+</div>
 
-    <!-- Welcome Section -->
-    <section class="welcome-section">
-        <div class="container">
-            <h2>Welcome</h2>
-            <p>Welcome to the Lubavitch Yeshiva Mesivta of Detroit.</p>
-            <p>Mesivta Detroit is focused on maximizing every talmid's unique potential, growth, and capabilities...</p>
-        </div>
-    </section>
+<div class="contact-section">
+  <h2>Get in Touch</h2>
+  <p>Email: lionsupfitters@example.com<br>Phone: (123) 456-7890</p>
+</div>
 
-    <!-- Our Vision Section -->
-    <section class="content">
-        <div class="container">
-            <h2>Our Vision</h2>
-            <p>Our Yeshiva is a trendsetter and model of instructional excellence...</p>
-        </div>
-    </section>
+<script>
+  const videos = document.querySelectorAll('.background-video');
+  let current = 0;
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Lubavitch Yeshiva Mesivta of Detroit</p>
-    </footer>
+  setInterval(() => {
+    videos[current].classList.remove('active');
+    current = (current + 1) % videos.length;
+    videos[current].classList.add('active');
+  }, 5000);
+</script>
 
 </body>
 </html>
