@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lions Upfitters</title>
+  <style>
+    @font-face {
+      font-family: 'TheLogoFont';
+      src: url('Fonts/The logo font we are using.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'TheWordsFont';
+      src: url('Fonts/The words font we are using.otf') format('opentype');
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'TheWordsFont', Arial, sans-serif;
+      color: white;
+      height: 100%;
+      background-color: black;
+    }
+
+    /* HEADER - currently hidden */
+    .site-header {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 50;
+      text-align: center;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-family: 'TheWordsFont', Arial, sans-serif;
+      font-size: 1em;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #FF4136;
+    }
+
+    /* VIDEO HEADER SECTION */
+    .video-header {
+      position: relative;
+      height: calc(100vh - 130px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      display: none;
+    }
+
+    .background-video.active {
+      display: block;
+    }
+
+    .overlay {
+      text-align: center;
+      padding: 20px;
+      z-index: 5;
+    }
+
+    .overlay-logo {
+      max-height: 120px;
+      margin-bottom: 20px;
+    }
+
+    .overlay h1 {
+      font-family: 'TheLogoFont', sans-serif;
+      font-size: 3em;
+      margin: 0;
+    }
+
+    .overlay p {
+      font-size: 1.5em;
+    }
+
+    /* CONTACT FOOTER */
+    .contact-section {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      color: black;
+      padding: 20px 10px;
+      text-align: center;
+      z-index: 20;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-section h2 {
+      margin: 0 0 10px;
+    }
+
+    .contact-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      color: black;
+      text-decoration: none;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-links a:hover {
+      color: #0073e6;
+    }
+
+    .contact-links img {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 600px) {
+      .video-header {
+        height: auto;
+        min-height: 50vh;
+        padding: 40px 10px 20px;
+        align-items: center;
+      }
+
+      .overlay-logo {
+        max-height: 80px;
+        margin-bottom: 10px;
+      }
+
+      .overlay h1 {
+        font-size: 2em;
+      }
+
+      .overlay p {
+        font-size: 1.2em;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .contact-section h2 {
+        font-size: 1.2em;
+      }
+
+      .contact-links a {
+        justify-content: left;
+        padding: 5px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="video-header">
+    <video class="background-video active" autoplay muted loop id="video2">
+      <source src="LL459691957224bgxgna751754.mp4" type="video/mp4" />
+    </video>
+    <video class="background-video" autoplay muted loop id="video3">
+      <source src="LL459691957224fgxgna751754.mp4" type="video/mp4" />
+    </video>
+
+    <div class="overlay">
+      <img src="lions logo - Copy.png" alt="Lions Upfitters Logo" class="overlay-logo" />
+      <h1>LIONS</h1>
+      <p>Lights N' Sirens Upfitters</p>
+      <p>Contact us for all your Lights N' Sirens needs.<br>
+      We also offer dash cam installation, backup cameras & more!</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+  </header>
+
+  <div class="contact-section">
+    <h2>Get in Touch</h2>
+    <div class="contact-links">
+      <a href="tel:+13474608961">
+        <img src="https://www.svgrepo.com/show/526086/phone.svg" alt="Phone" />
+        +1 (347) 460-8961
+      </a>
+      <a href="mailto:lionsupfitters@gmail.com">
+        <img src="https://www.svgrepo.com/show/502648/email.svg" alt="Email" />
+        info@lionslights.com
+      </a>
+      <a href="https://wa.me/13474608961" target="_blank">
+        <img src="https://www.svgrepo.com/show/475692/whatsapp-color.svg" alt="WhatsApp" />
+        WhatsApp
+      </a>
+      <a href="https://instagram.com/lions_upfitters" target="_blank">
+        <img src="https://www.svgrepo.com/show/452229/instagram-1.svg" alt="Instagram" />
+        @lions_upfitters
+      </a>
+      <a href="https://maps.google.com/?q=Crown+Heights+Brooklyn" target="_blank">
+        <img src="https://www.svgrepo.com/show/535493/map-pin.svg" alt="Location" />
+        Crown Heights, Brooklyn
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const videos = document.querySelectorAll('.background-video');
+    let current = 0;
+
+    setInterval(() => {
+      videos[current].classList.remove('active');
+      current = (current + 1) % videos.length;
+      videos[current].classList.add('active');
+    }, 10000);
+  </script>
+
+</body>
+</html>
