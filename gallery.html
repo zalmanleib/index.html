@@ -102,6 +102,16 @@
     .lightbox-content {
       max-width: 90vw;
       max-height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-content img,
+    .lightbox-content video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
     }
 
     .lightbox-close {
@@ -145,8 +155,9 @@
         el.alt = `Image ${i}`;
         el.loading = 'lazy';
         el.style.width = '100%';
-        el.style.height = 'auto';
-        el.onclick = () => openLightbox(`<img src='${imgPath}' style='max-width:100%; max-height:100%;' />`);
+        el.style.height = '100%';
+        el.style.objectFit = 'contain';
+        el.onclick = () => openLightbox(`<img src='${imgPath}' style='max-width:100%; max-height:100%; object-fit:contain;' />`);
         gallery.appendChild(el);
       };
 
@@ -168,14 +179,15 @@
         thumb.removeAttribute('controls');
         thumb.style.borderRadius = '8px';
         thumb.style.width = '100%';
-        thumb.style.height = 'auto';
+        thumb.style.height = '100%';
+        thumb.style.objectFit = 'cover';
 
         const icon = document.createElement('div');
         icon.className = 'video-icon';
 
         wrapper.appendChild(thumb);
         wrapper.appendChild(icon);
-        wrapper.onclick = () => openLightbox(`<video src='${vidPath}' controls autoplay style='max-width:100%; max-height:100%;'></video>`);
+        wrapper.onclick = () => openLightbox(`<video src='${vidPath}' controls autoplay style='max-width:100%; max-height:100%; object-fit:contain;'></video>`);
         gallery.appendChild(wrapper);
       };
     }
