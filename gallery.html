@@ -58,11 +58,32 @@
       gap: 15px;
     }
 
-    .gallery-container img, .gallery-container video {
+    .gallery-container img, .gallery-container video-thumbnail {
       width: 100%;
       height: auto;
       border-radius: 8px;
       cursor: pointer;
+      object-fit: cover;
+    }
+
+    .video-wrapper {
+      position: relative;
+    }
+
+    .video-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.6);
+      border-radius: 50%;
+      padding: 12px;
+    }
+
+    .video-icon::before {
+      content: '\25BA';
+      font-size: 24px;
+      color: white;
     }
 
     .lightbox {
@@ -123,6 +144,8 @@
         el.src = imgPath;
         el.alt = `Image ${i}`;
         el.loading = 'lazy';
+        el.style.width = '100%';
+        el.style.height = 'auto';
         el.onclick = () => openLightbox(`<img src='${imgPath}' style='max-width:100%; max-height:100%;' />`);
         gallery.appendChild(el);
       };
@@ -130,14 +153,30 @@
       const video = document.createElement('video');
       video.src = vidPath;
       video.muted = true;
-      video.controls = true;
       video.preload = "metadata";
       video.oncanplay = () => {
-        const vid = document.createElement('video');
-        vid.src = vidPath;
-        vid.controls = true;
-        vid.onclick = () => openLightbox(`<video src='${vidPath}' controls autoplay style='max-width:100%; max-height:100%;'></video>`);
-        gallery.appendChild(vid);
+        const wrapper = document.createElement('div');
+        wrapper.className = 'video-wrapper';
+        const thumb = document.createElement('video');
+        thumb.src = vidPath;
+        thumb.muted = true;
+        thumb.playsInline = true;
+        thumb.style.pointerEvents = 'none';
+        thumb.setAttribute('playsinline', 'true');
+        thumb.setAttribute('preload', 'metadata');
+        thumb.setAttribute('disablePictureInPicture', 'true');
+        thumb.removeAttribute('controls');
+        thumb.style.borderRadius = '8px';
+        thumb.style.width = '100%';
+        thumb.style.height = 'auto';
+
+        const icon = document.createElement('div');
+        icon.className = 'video-icon';
+
+        wrapper.appendChild(thumb);
+        wrapper.appendChild(icon);
+        wrapper.onclick = () => openLightbox(`<video src='${vidPath}' controls autoplay style='max-width:100%; max-height:100%;'></video>`);
+        gallery.appendChild(wrapper);
       };
     }
 
