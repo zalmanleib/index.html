@@ -1,31 +1,29 @@
-/* Main Stylesheet for Lions Upfitters */
-
+/* FONTS */
 @font-face {
   font-family: 'TheLogoFont';
-  src: url('Fonts/The logo font we are using.otf') format('opentype');
+  src: url('../Fonts/The logo font we are using.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'TheWordsFont';
-  src: url('Fonts/The words font we are using.otf') format('opentype');
+  src: url('../Fonts/The words font we are using.otf') format('opentype');
 }
 
-body, html {
+body {
   margin: 0;
-  padding: 0;
-  font-family: 'TheWordsFont', Arial, sans-serif;
+  font-family: 'TheWordsFont', sans-serif;
   background-color: black;
   color: white;
 }
 
 .site-header {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 10px 20px;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 1000;
   text-align: center;
 }
 
@@ -39,7 +37,7 @@ body, html {
   color: white;
   text-decoration: none;
   font-size: 1em;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover {
@@ -47,70 +45,80 @@ body, html {
 }
 
 .gallery-container {
-  padding: 100px 20px 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  padding: 80px 10px 20px;
 }
 
 .gallery-container img,
-.gallery-container video-thumbnail {
+.gallery-container .video-wrapper {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  cursor: pointer;
+  height: 100%;
   object-fit: cover;
+  cursor: pointer;
+  position: relative;
 }
 
 .video-wrapper {
   position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+}
+
+.video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
 }
 
 .video-icon {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   width: 28px;
   height: 28px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .video-icon img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   filter: invert(1);
 }
 
 .lightbox {
-  display: none;
   position: fixed;
-  z-index: 999;
-  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.9);
-  justify-content: center;
+  display: none;
   align-items: center;
+  justify-content: center;
+  z-index: 2000;
 }
 
 .lightbox-content {
   max-width: 90vw;
   max-height: 90vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-.lightbox-content img,
-.lightbox-content video {
-  width: auto;
-  height: auto;
-  max-width: 90vw;
-  max-height: 90vh;
+.lightbox img,
+.lightbox video {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
@@ -118,7 +126,7 @@ body, html {
   position: absolute;
   top: 20px;
   right: 30px;
-  font-size: 2em;
+  font-size: 40px;
   color: white;
   cursor: pointer;
 }
