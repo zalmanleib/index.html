@@ -30,9 +30,10 @@ body, html {
 
 .nav-links {
   display: flex;
-  justify-content: center;
+  justify-content: center;  /* Ensures the nav links are centered */
   gap: 20px;
   flex-wrap: wrap;
+  align-items: center;      /* Ensures the content is vertically centered */
 }
 
 .nav-links a {
