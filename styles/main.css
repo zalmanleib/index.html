@@ -1,3 +1,4 @@
+/* Fonts */
 @font-face {
   font-family: 'TheLogoFont';
   src: url('../fonts/The logo font we are using.otf') format('opentype');
@@ -13,6 +14,7 @@ body, html {
   padding: 0;
   font-family: 'TheWordsFont', Arial, sans-serif;
   color: white;
+  height: 100%;
   background-color: black;
 }
 
@@ -105,6 +107,10 @@ body, html {
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.contact-section h2 {
+  margin: 0 0 10px;
+}
+
 .contact-links {
   margin-top: 10px;
   display: flex;
@@ -131,69 +137,38 @@ body, html {
   height: 24px;
 }
 
-.gallery-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 10px;
-  padding: 20px;
-}
-
-.video-wrapper {
-  position: relative;
-  overflow: hidden;
-}
-
-.video-thumb {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.video-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-
-.video-icon img {
-  width: 40px;
-  height: 40px;
-}
-
-.lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.lightbox-content {
-  max-width: 90vw;
-  max-height: 90vh;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 3em;
-  color: white;
-  cursor: pointer;
-}
-
 @media (max-width: 600px) {
+  .video-header {
+    height: auto;
+    min-height: 50vh;
+    padding: 40px 10px 20px;
+    align-items: center;
+  }
+
+  .overlay-logo {
+    max-height: 80px;
+    margin-bottom: 10px;
+  }
+
   .overlay h1 {
     font-size: 2em;
   }
 
   .overlay p {
     font-size: 1.2em;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .contact-section h2 {
+    font-size: 1.2em;
+  }
+
+  .contact-links a {
+    justify-content: left;
+    padding: 5px 0;
   }
 }
