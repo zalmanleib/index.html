@@ -133,6 +133,88 @@
       color: #ddd;
     }
 
+    /* CUSTOMER QUOTES */
+    .customer-quotes {
+      position: relative;
+      background-color: #1a1a1a;
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 60px auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(255, 65, 54, 0.3);
+      color: #eee;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .customer-quotes h2 {
+      position: relative;
+      font-family: 'TheLogoFont', serif;
+      font-size: 2.5rem;
+      color: #ff4136;
+      margin-bottom: 40px;
+      z-index: 10;
+    }
+
+    .quotes-container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    blockquote {
+      background: #222;
+      border-left: 5px solid #ff4136;
+      padding: 20px 25px;
+      font-style: italic;
+      font-size: 1.1rem;
+      max-width: 280px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #ddd;
+    }
+
+    blockquote footer {
+      margin-top: 15px;
+      font-weight: 600;
+      font-style: normal;
+      color: #ff7566;
+      text-align: right;
+      font-size: 0.95rem;
+    }
+
+    /* Large transparent quotation mark background */
+    .quote-bg {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      font-family: serif;
+      font-size: 16rem;
+      font-weight: 900;
+      color: rgba(255, 65, 54, 0.07);
+      user-select: none;
+      pointer-events: none;
+      transform: translateY(-50%);
+      animation: slideQuote 20s linear infinite;
+      z-index: 5;
+    }
+
+    /* Animation sliding from right to left */
+    @keyframes slideQuote {
+      0% {
+        left: 100%;
+      }
+      100% {
+        left: -30%;
+      }
+    }
+
     /* FOOTER */
     footer {
       background: #111;
@@ -167,100 +249,18 @@
         max-width: 100%;
       }
 
-.customer-quotes {
-  position: relative;
-  background-color: #1a1a1a;
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: 60px auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(255, 65, 54, 0.3);
-  color: #eee;
-  text-align: center;
-  overflow: hidden; /* needed for animation clipping */
-}
+      .quotes-container {
+        flex-direction: column;
+        gap: 25px;
+      }
 
-.customer-quotes h2 {
-  position: relative;
-  font-family: 'TheLogoFont', serif;
-  font-size: 2.5rem;
-  color: #ff4136;
-  margin-bottom: 40px;
-  z-index: 10;
-}
-
-.quotes-container {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  z-index: 10;
-}
-
-blockquote {
-  background: #222;
-  border-left: 5px solid #ff4136;
-  padding: 20px 25px;
-  font-style: italic;
-  font-size: 1.1rem;
-  max-width: 280px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #ddd;
-}
-
-blockquote footer {
-  margin-top: 15px;
-  font-weight: 600;
-  font-style: normal;
-  color: #ff7566;
-  text-align: right;
-  font-size: 0.95rem;
-}
-
-/* Large transparent quotation mark background */
-.quote-bg {
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  font-family: serif;
-  font-size: 16rem;
-  font-weight: 900;
-  color: rgba(255, 65, 54, 0.07);
-  user-select: none;
-  pointer-events: none;
-  transform: translateY(-50%);
-  animation: slideQuote 20s linear infinite;
-  z-index: 5;
-}
-
-/* Animation sliding from right to left */
-@keyframes slideQuote {
-  0% {
-    left: 100%;
-  }
-  100% {
-    left: -30%;
-  }
-}
-
-@media (max-width: 768px) {
-  .quotes-container {
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  blockquote {
-    max-width: 100%;
-  }
-  
-  .quote-bg {
-    font-size: 10rem;
-  }
+      blockquote {
+        max-width: 100%;
+      }
+      
+      .quote-bg {
+        font-size: 10rem;
+      }
     }
   </style>
 </head>
@@ -298,26 +298,25 @@ blockquote footer {
       </article>
     </section>
 
-<section class="customer-quotes">
-  <h2>What Our Customers Say</h2>
-  <div class="quotes-container">
-    <blockquote>
-      “Lions Upfitters provided exceptional service and quick turnaround. The installation exceeded my expectations!”
-      <footer>— Jessica M.</footer>
-    </blockquote>
-    <blockquote>
-      “Highly professional team. Their attention to detail on my emergency lights was impressive and reliable.”
-      <footer>— Carlos R.</footer>
-    </blockquote>
-    <blockquote>
-      “Great communication, affordable pricing, and outstanding quality. I recommend Lions Upfitters to all my colleagues.”
-      <footer>— Dana S.</footer>
-    </blockquote>
-  </div>
-  <div class="quote-bg">“</div>
-</section>
+    <section class="customer-quotes">
+      <h2>What Our Customers Say</h2>
+      <div class="quotes-container">
+        <blockquote>
+          “Lions Upfitters provided exceptional service and quick turnaround. The installation exceeded my expectations!”
+          <footer>— Jessica M.</footer>
+        </blockquote>
+        <blockquote>
+          “Highly professional team. Their attention to detail on my emergency lights was impressive and reliable.”
+          <footer>— Carlos R.</footer>
+        </blockquote>
+        <blockquote>
+          “Great communication, affordable pricing, and outstanding quality. I recommend Lions Upfitters to all my colleagues.”
+          <footer>— Dana S.</footer>
+        </blockquote>
+      </div>
+      <div class="quote-bg">“</div>
+    </section>
 
-    
   </main>
 
   <footer>
