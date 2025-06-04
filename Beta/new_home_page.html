@@ -9,7 +9,6 @@
       font-family: 'TheLogoFont';
       src: url('Fonts/The logo font we are using.otf') format('opentype');
     }
-    
     @font-face {
       font-family: 'TheWordsFont';
       src: url('Fonts/The words font we are using.otf') format('opentype');
@@ -18,10 +17,8 @@
     * {
       box-sizing: border-box;
     }
-
     body, html {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'TheWordsFont', Arial, sans-serif;
       background-color: #111;
       color: #eee;
@@ -30,30 +27,25 @@
       flex-direction: column;
     }
 
-    /* HEADER BAR */
+    /* Header */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+      top: 0; left: 0; right: 0;
       height: 80px;
-      background: url('https://img1.wsimg.com/isteam/getty/1484986691') center center/cover no-repeat;
+      background: url('https://img1.wsimg.com/isteam/getty/1484986691') center/cover no-repeat;
       display: flex;
       align-items: center;
       padding: 0 20px;
-      z-index: 1000;
       box-shadow: inset 0 -3px 5px rgba(0,0,0,0.7);
+      z-index: 1000;
     }
-
     header img.logo {
       height: 60px;
       width: auto;
     }
-
     nav {
       margin-left: auto;
     }
-
     nav a {
       color: white;
       text-decoration: none;
@@ -62,19 +54,17 @@
       font-size: 1rem;
       transition: color 0.3s ease;
     }
-
     nav a:hover {
       color: #FF4136;
     }
 
-    /* MAIN CONTENT */
+    /* Main content */
     main {
       padding: 100px 20px 60px;
       max-width: 1100px;
       margin: 0 auto;
       flex-grow: 1;
     }
-
     h1 {
       font-family: 'TheLogoFont', serif;
       font-size: 3rem;
@@ -82,7 +72,6 @@
       color: #ff4136;
       text-align: center;
     }
-
     p.lead {
       font-size: 1.25rem;
       margin-bottom: 40px;
@@ -90,13 +79,13 @@
       color: #ccc;
     }
 
+    /* Services section */
     .services {
       display: flex;
       flex-wrap: wrap;
       gap: 40px;
       justify-content: center;
     }
-
     .service {
       background: #222;
       border-radius: 10px;
@@ -107,130 +96,138 @@
       display: flex;
       flex-direction: column;
     }
-
     .service img {
       width: 100%;
       height: 250px;
       object-fit: cover;
       border-bottom: 3px solid #ff4136;
     }
-
     .service-content {
       padding: 20px;
       flex-grow: 1;
     }
-
     .service-content h2 {
       margin-top: 0;
       font-size: 1.6rem;
       margin-bottom: 10px;
       color: #ff4136;
     }
-
     .service-content p {
       font-size: 1rem;
       line-height: 1.4;
       color: #ddd;
     }
 
-    /* CUSTOMER QUOTES */
-.customer-quotes {
-  background-color: #1a1a1a;
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: 60px auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(255, 65, 54, 0.3);
-  color: #eee;
-  overflow: hidden;
-  position: relative;
-}
+    /* Customer Quotes Section */
+    .customer-quotes {
+      background-color: #1a1a1a;
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 60px auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(255, 65, 54, 0.3);
+      color: #eee;
+      overflow: hidden;
+      position: relative;
+    }
+    .customer-quotes h2 {
+      font-family: 'TheLogoFont', serif;
+      font-size: 2.5rem;
+      color: #ff4136;
+      margin-bottom: 40px;
+      text-align: center;
+    }
 
-.customer-quotes h2 {
-  font-family: 'TheLogoFont', serif;
-  font-size: 2.5rem;
-  color: #ff4136;
-  margin-bottom: 40px;
-  text-align: center;
-}
+    /* Slider container */
+    .quotes-slider {
+      overflow: hidden;
+      width: 100%;
+    }
 
-/* Slider container */
-.quotes-slider {
-  overflow: hidden;
-  width: 100%;
-}
+    /* Track with flex for horizontal sliding */
+    .quotes-track {
+      display: flex;
+      gap: 30px;
+      animation: slideQuotes 20s linear infinite;
+      will-change: transform;
+    }
 
-/* Track with flex to hold quote cards inline */
-.quotes-track {
-  display: flex;
-  gap: 30px;
-  animation: slideQuotes 20s linear infinite;
-}
-
-/* Single quote card */
 .quote-card {
+  position: relative;
   background: #000;
   border-radius: 10px;
-  padding: 25px 20px 40px;
+  padding: 40px 20px 40px;
   min-width: 280px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.8);
   color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
+  overflow: hidden; /* Ensure icon doesn’t overflow */
 }
 
-/* Quote text */
 .quote-card p {
   font-style: italic;
   font-size: 1.1rem;
-  margin: 0 0 30px;
+  margin: 0 0 30px 0;
+  position: relative;
+  z-index: 2; /* Keep text above icon */
 }
 
-/* Quotation icon below text */
 .quote-icon {
-  font-size: 3rem;
-  color: #ff4136;
   position: absolute;
-  bottom: 10px;
-  left: 20px;
+  top: 10px;
+  left: 10px;
+  font-size: 8rem;
+  color: rgba(255, 65, 54, 0.15);
   user-select: none;
   pointer-events: none;
+  z-index: 1; /* Behind the text */
+  font-family: serif; /* Optional: make it a serif style */
+  line-height: 1;
+  transform: translate(-10%, -10%);
 }
 
-/* Footer with customer name */
-.quote-card footer {
-  font-weight: 600;
-  color: #ff7566;
-  font-size: 0.95rem;
-  margin-top: auto;
-  text-align: right;
-}
+    /* Footer with customer name aligned right */
+    .quote-card footer {
+      font-weight: 600;
+      color: #ff7566;
+      font-size: 0.95rem;
+      margin-top: auto;
+      text-align: right;
+    }
 
-/* Animation keyframes */
-@keyframes slideQuotes {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+    /* Sliding animation */
+    @keyframes slideQuotes {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .quote-card {
-    min-width: 250px;
-    padding: 20px 15px 35px;
-  }
-  .quote-icon {
-    font-size: 2.5rem;
-    bottom: 8px;
-    left: 15px;
-  }
-}
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .quote-card {
+        min-width: 250px;
+        padding: 20px 15px 35px;
+      }
+      .quote-icon {
+        font-size: 2.5rem;
+        bottom: 8px;
+        left: 15px;
+      }
+    }
 
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
   </style>
 </head>
 <body>
@@ -267,44 +264,49 @@
       </article>
     </section>
 
-<section class="customer-quotes">
-  <h2>What Our Customers Say</h2>
-  <div class="quotes-slider">
-    <div class="quotes-track">
-      <div class="quote-card">
-        <p>“Lions Upfitters provided exceptional service and quick turnaround. The installation exceeded my expectations!”</p>
-        <div class="quote-icon">❝</div>
-        <footer>— Jessica M.</footer>
+    <section class="customer-quotes">
+      <h2>What Our Customers Say</h2>
+      <div class="quotes-slider" aria-label="Customer quotes slider">
+        <div class="quotes-track">
+          <article class="quote-card" role="group" aria-label="Quote from Jessica M.">
+            <p>“Lions Upfitters provided exceptional service and quick turnaround. The installation exceeded my expectations!”</p>
+            <div class="quote-icon" aria-hidden="true">❝</div>
+            <footer>— Jessica M.</footer>
+          </article>
+
+          <article class="quote-card" role="group" aria-label="Quote from Carlos R.">
+            <p>“Highly professional team. Their attention to detail on my emergency lights was impressive and reliable.”</p>
+            <div class="quote-icon" aria-hidden="true">❝</div>
+            <footer>— Carlos R.</footer>
+          </article>
+
+          <article class="quote-card" role="group" aria-label="Quote from Dana S.">
+            <p>“Great communication, affordable pricing, and outstanding quality. I recommend Lions Upfitters to all my colleagues.”</p>
+            <div class="quote-icon" aria-hidden="true">❝</div>
+            <footer>— Dana S.</footer>
+          </article>
+
+          <!-- Repeat quotes to create seamless sliding -->
+          <article class="quote-card" role="group" aria-label="Quote from Jessica M.">
+            <p>“Lions Upfitters provided exceptional service and quick turnaround. The installation exceeded my expectations!”</p>
+            <div class="quote-icon" aria-hidden="true">❝</div>
+            <footer>— Jessica M.</footer>
+          </article>
+
+          <article class="quote-card" role="group" aria-label="Quote from Carlos R.">
+            <p>“Highly professional team. Their attention to detail on my emergency lights was impressive and reliable.”</p>
+            <div class="quote-icon" aria-hidden="true">❝</div>
+            <footer>— Carlos R.</footer>
+          </article>
+
+          <article class="quote-card" role="group" aria-label="Quote from Dana S.">
+            <p>“Great communication, affordable pricing, and outstanding quality. I recommend Lions Upfitters to all my colleagues.”</p>
+            <div class="quote-icon" aria-hidden="true">❝</div>
+            <footer>— Dana S.</footer>
+          </article>
+        </div>
       </div>
-      <div class="quote-card">
-        <p>“Highly professional team. Their attention to detail on my emergency lights was impressive and reliable.”</p>
-        <div class="quote-icon">❝</div>
-        <footer>— Carlos R.</footer>
-      </div>
-      <div class="quote-card">
-        <p>“Great communication, affordable pricing, and outstanding quality. I recommend Lions Upfitters to all my colleagues.”</p>
-        <div class="quote-icon">❝</div>
-        <footer>— Dana S.</footer>
-      </div>
-      <!-- Repeat the quotes again to make seamless sliding -->
-      <div class="quote-card">
-        <p>“Lions Upfitters provided exceptional service and quick turnaround. The installation exceeded my expectations!”</p>
-        <div class="quote-icon">❝</div>
-        <footer>— Jessica M.</footer>
-      </div>
-      <div class="quote-card">
-        <p>“Highly professional team. Their attention to detail on my emergency lights was impressive and reliable.”</p>
-        <div class="quote-icon">❝</div>
-        <footer>— Carlos R.</footer>
-      </div>
-      <div class="quote-card">
-        <p>“Great communication, affordable pricing, and outstanding quality. I recommend Lions Upfitters to all my colleagues.”</p>
-        <div class="quote-icon">❝</div>
-        <footer>— Dana S.</footer>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
   </main>
 
