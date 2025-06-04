@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lions Upfitters - Home</title>
+  <style>
+    @font-face {
+      font-family: 'TheLogoFont';
+      src: url('Fonts/The logo font we are using.otf') format('opentype');
+    }
+    
+    @font-face {
+      font-family: 'TheWordsFont';
+      src: url('Fonts/The words font we are using.otf') format('opentype');
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'TheWordsFont', Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER BAR */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: url('https://img1.wsimg.com/isteam/getty/1484986691') center center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      z-index: 1000;
+      box-shadow: inset 0 -3px 5px rgba(0,0,0,0.7);
+    }
+
+    header img.logo {
+      height: 60px;
+      width: auto;
+    }
+
+    nav {
+      margin-left: auto;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #FF4136;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      padding: 100px 20px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+      flex-grow: 1;
+    }
+
+    h1 {
+      font-family: 'TheLogoFont', serif;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #ff4136;
+      text-align: center;
+    }
+
+    p.lead {
+      font-size: 1.25rem;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #ccc;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .service {
+      background: #222;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      max-width: 450px;
+      flex: 1 1 300px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-bottom: 3px solid #ff4136;
+    }
+
+    .service-content {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .service-content h2 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: #ff4136;
+    }
+
+    .service-content p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #ddd;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: #666;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        height: 70px;
+        padding: 0 15px;
+      }
+
+      header img.logo {
+        height: 50px;
+      }
+
+      nav a {
+        margin-left: 15px;
+        font-size: 0.9rem;
+      }
+
+      main {
+        padding: 90px 15px 60px;
+      }
+
+      .service {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="lions logo - Copy.png" alt="Lions Upfitters Logo" class="logo" />
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>LIONS Upfitters</h1>
+    <p class="lead">Your trusted partner for Lights N' Sirens installations, dash cams, backup cameras, and more.</p>
+
+    <section class="services">
+      <article class="service">
+        <img src="https://img1.wsimg.com/isteam/getty/1484986691" alt="Emergency Light Installations" />
+        <div class="service-content">
+          <h2>Emergency Light Installations</h2>
+          <p>Custom LED lights, strobes, and flash patterns installed with precision and reliability for every type of emergency response vehicle.</p>
+        </div>
+      </article>
+
+      <article class="service">
+        <img src="https://img1.wsimg.com/isteam/getty/1355700216" alt="Interior Console Mounting" />
+        <div class="service-content">
+          <h2>Interior Console Mounting</h2>
+          <p>Mounts, tablets, switch boxes, and siren control systems fitted securely and cleanly for optimal control and access.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Lions Upfitters. All rights reserved.
+  </footer>
+
+</body>
+</html>
