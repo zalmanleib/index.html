@@ -116,15 +116,16 @@
     }
 
     .customer-quotes {
-      background-color: #1a1a1a;
-      margin-top: 60px;
       padding: 60px 0;
-      width: 100%;
-      box-shadow: 0 6px 15px rgba(255, 65, 54, 0.3);
+      width: 100vw; /* Full viewport width */
+      margin-left: calc(-50vw + 50%); /* Overflow past container edges */
+      background: none; /* Remove dark background */
+      box-shadow: none;
       color: #eee;
       overflow: hidden;
       position: relative;
     }
+    
     .customer-quotes h2 {
       font-family: 'TheLogoFont', serif;
       font-size: 2.5rem;
@@ -136,7 +137,7 @@
     .quotes-slider {
       overflow: hidden;
       width: 100%;
-      padding: 0 40px;
+      padding: 0 20px; /* You can lower this or make it 0 */
       box-sizing: border-box;
     }
 
