@@ -27,7 +27,6 @@
       flex-direction: column;
     }
 
-    /* Header */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -58,7 +57,6 @@
       color: #FF4136;
     }
 
-    /* Main content */
     main {
       padding: 100px 20px 60px;
       max-width: 1100px;
@@ -79,7 +77,6 @@
       color: #ccc;
     }
 
-    /* Services section */
     .services {
       display: flex;
       flex-wrap: wrap;
@@ -118,13 +115,10 @@
       color: #ddd;
     }
 
-    /* Customer Quotes Section */
     .customer-quotes {
       background-color: #1a1a1a;
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: 60px auto;
-      border-radius: 12px;
+      padding: 60px 0;
+      width: 100%;
       box-shadow: 0 6px 15px rgba(255, 65, 54, 0.3);
       color: #eee;
       overflow: hidden;
@@ -138,57 +132,61 @@
       text-align: center;
     }
 
-    /* Slider container */
     .quotes-slider {
       overflow: hidden;
       width: 100%;
+      padding: 0 40px;
+      box-sizing: border-box;
     }
 
-    /* Track with flex for horizontal sliding */
     .quotes-track {
       display: flex;
       gap: 30px;
-      animation: slideQuotes 20s linear infinite;
+      animation: slideQuotes 30s linear infinite;
       will-change: transform;
+      width: max-content;
     }
 
-.quote-card {
-  position: relative;
-  background: #000;
-  border-radius: 10px;
-  padding: 40px 20px 40px;
-  min-width: 280px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden; /* Ensure icon doesn’t overflow */
-}
+    .quote-card {
+      background: #222;
+      padding: 30px 25px;
+      margin: 10px 0;
+      border-radius: 12px;
+      min-width: 320px;
+      max-width: 480px;
+      flex: 0 0 auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      backdrop-filter: blur(2px);
+    }
 
-.quote-card p {
-  font-style: italic;
-  font-size: 1.1rem;
-  margin: 0 0 30px 0;
-  position: relative;
-  z-index: 2; /* Keep text above icon */
-}
+    .quote-card p {
+      font-style: italic;
+      font-size: 1.2rem;
+      margin: 0 0 30px 0;
+      position: relative;
+      z-index: 2;
+    }
 
-.quote-icon {
-  position: absolute;
-  top: 20px;
-  left: 10px;
-  font-size: 10rem;
-  color: rgba(255, 65, 54, 0.15);
-  user-select: none;
-  pointer-events: none;
-  z-index: 1; /* Behind the text */
-  font-family: serif; /* Optional: make it a serif style */
-  line-height: 1;
-  transform: translate(-5%, -15%);
-}
+    .quote-icon {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      font-size: 10rem;
+      color: rgba(255, 65, 54, 0.1);
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+      font-family: serif;
+      line-height: 1;
+      transform: translate(-5%, -15%);
+    }
 
-    /* Footer with customer name aligned right */
     .quote-card footer {
       font-weight: 600;
       color: #ff7566;
@@ -197,17 +195,11 @@
       text-align: right;
     }
 
-    /* Sliding animation */
     @keyframes slideQuotes {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
     }
 
-    /* Responsive adjustments */
     @media (max-width: 768px) {
       .quote-card {
         min-width: 250px;
@@ -233,7 +225,7 @@
 <body>
 
   <header>
-<img src="https://lionslights.com/lions%20logo%20-%20Copy.png" alt="Lions Upfitters Logo" class="logo" />
+    <img src="https://lionslights.com/lions%20logo%20-%20Copy.png" alt="Lions Upfitters Logo" class="logo" />
     <nav>
       <a href="new_home_page.html">Home</a>
       <a href="gallery.html">Gallery</a>
@@ -286,7 +278,7 @@
             <footer>— Dana S.</footer>
           </article>
 
-          <!-- Repeat quotes to create seamless sliding -->
+          <!-- Repeats for seamless animation -->
           <article class="quote-card" role="group" aria-label="Quote from Jessica M.">
             <p>“Lions Upfitters provided exceptional service and quick turnaround. The installation exceeded my expectations!”</p>
             <div class="quote-icon" aria-hidden="true">❝</div>
@@ -307,7 +299,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <footer>
