@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LIONS – Lights N' Sirens Upfitters</title>
+
+<style>
+@font-face {
+  font-family: "LionsLogo";
+  src: url("fonts/The logo font we are using.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "LionsText";
+  src: url("fonts/The words font we are using.otf") format("opentype");
+}
+
+:root {
+  --bg: #0f0f12;
+  --card: #1a1a20;
+  --accent: #ff9a7a;
+  --text: #ffffff;
+  --muted: #9aa0a6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "LionsText", system-ui, sans-serif;
+  background: linear-gradient(180deg, #111, #000);
+  color: var(--text);
+}
+
+.container {
+  max-width: 420px;
+  margin: auto;
+  padding: 24px 16px 80px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 28px 22px;
+  margin-top: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.4);
+  transform: translateY(40px);
+  opacity: 0;
+  transition: all .6s ease;
+}
+
+.card.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+  margin: 24px auto 12px;
+  border-radius: 24px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+h1 {
+  text-align: center;
+  margin: 6px 0 2px;
+  font-size: 1.9em;
+  letter-spacing: 2px;
+  font-family: "LionsLogo", "LionsText", sans-serif;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.action {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  margin: 10px 0;
+  border-radius: 14px;
+  background: #26262e;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.05em;
+  transition: transform .1s ease, background .2s;
+}
+
+.action:active {
+  transform: scale(.97);
+  background: #30303a;
+}
+
+.primary {
+  background: var(--accent);
+  color: #000;
+  font-weight: 600;
+}
+
+.primary:active {
+  background: #ffb19a;
+}
+
+footer {
+  text-align: center;
+  color: #666;
+  margin-top: 32px;
+  font-size: .8em;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="logo">
+    <img src="https://lionslights.com/lions%20logo%20-%20Copy.png" alt="LIONS Logo">
+  </div>
+
+  <h1>LIONS</h1>
+  <div class="subtitle">Lights N' Sirens Upfitters</div>
+
+  <div class="card reveal">
+    <a class="action primary" href="lions.vcf" download>Save Contact</a>
+    <a class="action" href="tel:+12223336767">Call</a>
+    <a class="action" href="mailto:info@lions.com">Email</a>
+    <a class="action" href="https://wa.me/12223336767">WhatsApp</a>
+    <a class="action" href="https://instagram.com/YOUR_INSTAGRAM">Instagram</a>
+  </div>
+
+  <div class="card reveal">
+    <p style="color:var(--text); font-size:1.05em; line-height:1.6; margin:0;">
+      Contact us for all your Lights N' Sirens needs.<br>
+      <span style="color:var(--muted);">
+        We also offer dash cam installation, backup cameras &amp; more!
+      </span>
+    </p>
+  </div>
+
+  <div class="card reveal">
+    <strong style="display:block;margin-bottom:12px;">Crown Heights, Brooklyn</strong>
+    <div style="width:100%;height:220px;border-radius:16px;overflow:hidden;">
+      <iframe
+        width="100%"
+        height="100%"
+        frameborder="0"
+        style="border:0"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Crown+Heights+Brooklyn+NY&output=embed"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <footer>© LIONS</footer>
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("show");
+  });
+}, { threshold: .15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
